@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct LatteLensApp: App {
+    @StateObject private var store = ArtworkStore()
+    
+    init() {
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(store)
+                .preferredColorScheme(.dark)
         }
     }
 }
